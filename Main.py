@@ -12,7 +12,7 @@ This driver file will recieve the image path
 Steps of flow :- 
     1) Create Slides of the image
     2) Does the preprocessing (resizing each slide to 28x28x3 and transform to tensor)
-    3) Feed the slides to ocr.py which gives the detected text.
+    3) Feed the preprocessed slides to ocr.py which gives the detected text.
 '''
 
 binClass, classNet = mm()
@@ -21,18 +21,15 @@ def recog_name_number(image_path):
 
     image = cv2.imread(image_path)
 
-    name_li, num_li = get_name_num(image, num_pos, name_pos)
+    slides = get_name_num(image)
 
-    # Preprocessing, normlizing and converting the slide images to tensor
-    name_li = transform_to_tensor(resize28X28(name_li))
-    num_li = transform_to_tensor(resize28X28(num_li))
+    # Preprocessing, normlizing and converting the slides to tensor
+    transformed_slides = transform_to_tensor(resize28X28(slides))
 
-    #evaluating the channel name and number
-    channel_num = ocr.evaluate(num_li, binClass, classNet, 0)
-    channel_name = ocr.evaluate(name_li, binClass, classNet, 1)
+    #evaluating the image to text
+    string = ocr.evaluate(transformed_slides, binClass, classNet, 1)
 
-    print('channel_name : ' + channel_name)
-    print('channel_num : ' + channel_num)
+    print('Predicted string is : ' + string)
 
 
 CRN = 1059
