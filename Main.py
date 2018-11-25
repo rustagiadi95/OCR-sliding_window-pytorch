@@ -30,9 +30,3 @@ def recog_name_number(image_path):
     string = ocr.evaluate(transformed_slides, binClass, classNet, 1)
 
     print('Predicted string is : ' + string)
-
-
-CRN = 1059
-
-image = 'D:\\Projects\\ArtifIQ\\channel_detection\\Data_New\\OCR1\\CRN\\CHR00' + \
-    str(CRN) + '\\80.jpg'

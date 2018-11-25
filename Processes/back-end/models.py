@@ -1,7 +1,6 @@
 '''
 The file holds the architecture of the models involved.
 '''
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -11,7 +10,6 @@ import torchvision.datasets as dsets
 '''
 The code of negative / positive sample character segmentation net
 '''
-
 
 class BinaryClassNet(nn.Module):
     def __init__(self):
@@ -45,9 +43,7 @@ class BinaryClassNet(nn.Module):
 
 '''
 The architecture of classification of characters neural network
- '''
-
-
+'''
 class ClassificationNet(nn.Module):
 
     def __init__(self):
