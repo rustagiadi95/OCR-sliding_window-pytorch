@@ -4,8 +4,6 @@ The file holds the architecture of the models involved.
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-import torchvision.datasets as dsets
 
 '''
 The code of negative / positive sample character segmentation net
