@@ -1,6 +1,6 @@
 import sys
-sys.path.insert(0, 'Channel_Name_Num')
-sys.path.insert(0, '\\Back-end')
+sys.path.insert(0, 'Processes')
+sys.path.insert(0, 'Processes\\Back-end')
 from create_slides import get_name_num
 from preprocessing import resize28X28, transform_to_tensor
 from models import make_models as mm
@@ -17,17 +17,10 @@ Steps of flow :-
 
 binClass, classNet = mm()
 
+def recog_name_number(image_path):
 
-def recog_name_number(image, CRN):
+    image = cv2.imread(image_path)
 
-    csv = pd.read_csv('name and nums.csv')
-
-    # Retrieving the co-ordinates of channel name and number
-    df = csv[csv['CRN'] == CRN]
-    num_pos = ast.literal_eval(df['Num Position'].values[0])
-    name_pos = ast.literal_eval(df['Name Position'].values[0])
-
-    # Localizing the channel name and number
     name_li, num_li = get_name_num(image, num_pos, name_pos)
 
     # Preprocessing, normlizing and converting the slide images to tensor
@@ -46,9 +39,3 @@ CRN = 1059
 
 image = 'D:\\Projects\\ArtifIQ\\channel_detection\\Data_New\\OCR1\\CRN\\CHR00' + \
     str(CRN) + '\\80.jpg'
-image = cv2.imread(image)
-# cv2.imshow('image', image)
-# cv2.waitKey(0)
-'''ENTRY POINT OF THE MODULE'''
-# print(image.shape)
-recog_name_number(image, CRN)
