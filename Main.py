@@ -17,7 +17,7 @@ Steps of flow :-
 
 binClass, classNet = mm()
 
-def recog_name_number(image_path):
+def recog_image(image_path):
 
     image = cv2.imread(image_path)
 
