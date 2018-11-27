@@ -73,7 +73,7 @@ def make_models():
 
     binclass = BinaryClassNet().double()
     binclass.load_state_dict(torch.load(
-        "D:\Projects\ArtifIQ\channel_detection\OCR\Channel_Name_Num\Back-end\Saved_Model\ClassificationNetv3.pt"))
+        "D:\Projects\ArtifIQ\channel_detection\OCR\Channel_Name_Num\Back-end\Saved_Model\ClassificationNetCPU.pt"))
 
     classNet = ClassificationNet().double()
     classNet.load_state_dict(torch.load(
